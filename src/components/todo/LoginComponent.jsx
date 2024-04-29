@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "./security/AuthContext"
 
 function LoginComponent() {
 
@@ -7,8 +8,9 @@ function LoginComponent() {
     const [password, setPassword] = useState('')
     const [showSuccessMessage, setShowSuccessMessage] = useState(false)
     const [showErrorMessage, setShowErrorMessage] = useState(false)
-
+    
     const navigate = useNavigate()
+    const authContext = useAuth()
 
     function handleUsernameChange(event) {
         setUsername(event.target.value);    // event.tartget.value : onchange 했을 때 들어오는 event 값의 value
@@ -20,11 +22,14 @@ function LoginComponent() {
 
     function handleSubmit() {
         if(username==='ecode' && password==='1111') {
+            authContext.setAuthenticated(true)
             console.log('Success')
             setShowSuccessMessage(true)
             setShowErrorMessage(false)
             navigate(`/welcome/${username}`)    // welcome으로 라우팅
+            
         } else {
+            authContext.setAuthenticated(false)
             console.log('Failed')
             setShowSuccessMessage(false)
             setShowErrorMessage(true)
