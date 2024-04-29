@@ -21,17 +21,9 @@ function LoginComponent() {
     }
 
     function handleSubmit() {
-        if(username==='ecode' && password==='1111') {
-            authContext.setAuthenticated(true)
-            console.log('Success')
-            setShowSuccessMessage(true)
-            setShowErrorMessage(false)
-            navigate(`/welcome/${username}`)    // welcome으로 라우팅
-            
+        if(authContext.login(username, password)){ //NEW
+            navigate(`/welcome/${username}`)
         } else {
-            authContext.setAuthenticated(false)
-            console.log('Failed')
-            setShowSuccessMessage(false)
             setShowErrorMessage(true)
         }
     }
