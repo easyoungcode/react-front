@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom"
+import { AuthContext, useAuth } from "./security/AuthContext"    // AuthContext가 export default가 아니므로 {} 안에 값 표시 
 
 function HeaderComponent() {
+    
+    // const authContext = useContext(AuthContext)
+    const authContext = useAuth()
+
+    // console.log(authContext.number)
+
     return (
         <header className="border-bottom border-light border-5 mb-5 p-2">
         <div className="container">

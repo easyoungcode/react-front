@@ -31,18 +31,6 @@ function LoginComponent() {
         }
     }
 
-    function SuccessMessageComponent() {
-        if(showSuccessMessage) 
-            return  <div className="successMessage">Authenticated Successfully</div>
-        return null;
-    }
-
-    function ErrorMessageComponent() {
-        if(showErrorMessage) 
-            return  <div className="errorMessage">Authentication Failed. Please check your credentials.</div>
-        return null;
-    }
-
     return (
         <div className="Login">
             {/* 아래 코드 설명*/}
