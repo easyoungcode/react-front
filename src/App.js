@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import { Component } from 'react';
 import LearningComponets from './components/learning-examples/LearningComponent';
 import Counter from './components/learning-examples/counter/Counter';

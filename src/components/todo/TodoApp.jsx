@@ -1,39 +1,33 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import LoginComponent from './LoginComponent'
+import LogoutComponent from './LogoutComponent'
+import FooterComponent from './FooterComponent'
+import HeaderComponent from './HeaderComponent'
+import ErrorComponent from './ErrorComponent'
+import ListTodosComponent from './ListTodosComponent'
+import WelcomeComponent from './WelcomeComponent'
+
 import './TodoApp.css'
-    
+
 export default function TodoApp() {
     return (
         <div className="TodoApp">
-            <LoginComponent />
-            {/* <WelcomeComponent /> */}
-        </div>
-    )
-}
+            {/* 브라우저 라우팅 */}
+            <BrowserRouter>
+            <HeaderComponent />
+                <Routes>
+                    <Route path='/' element={<LoginComponent />} />
+                    <Route path='/login' element={<LoginComponent />} />
+                    <Route path='/welcome/:username' element={<WelcomeComponent />} />
+                    <Route path='/todos' element={<ListTodosComponent />} />
 
-function LoginComponent() {
-    return (
-        <div className="Login">
-            <div className="LoginForm">
-                <div>
-                    <label>User Name:</label>
-                    <input type="text" name="username" />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="password" />
-                </div>
-                <div>
-                    <button type="button" name="login">login</button>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-function WelcomeComponent() {
-    return (
-        <div className="Welcome">
-            Welcome Component
+                    <Route path='*' element={<ErrorComponent />} />
+                    <Route path='/logout' element={<LogoutComponent />} />
+                </Routes>
+                <FooterComponent />
+            </BrowserRouter>
         </div>
     )
 }
